@@ -10,3 +10,4 @@
   },
   //"include": ["src/index.ts", "src/types/*.d.ts"]
 }
+//./node_modules/.bin/tsc --init     - утилита для правильной настройки конфига
