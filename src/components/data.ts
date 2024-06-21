@@ -71,12 +71,20 @@ export class AppStatus extends Product<IProduct>{
 	validateOrderForm() {
 		const errors: typeof this.formErrors = {};
 
-		if (!this.order.email) {
-			errors.email = 'Необходимо указать email';
-		}
-		if (!this.order.phone) {
-			errors.phone = 'Необходимо указать телефон';
-		}
+		// if (!this.order.email) {
+		// 	errors.email = 'Необходимо указать email';
+		// }
+		if (!this.order.email) errors.email = 'Необходимо указать email';
+		else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.order.email))
+			errors.email = 'Некорректный формат email';
+		// if (!this.order.phone) {
+		// 	errors.phone = 'Необходимо указать телефон';
+		// }
+		if (!this.order.phone) errors.phone = 'Необходимо указать телефон';
+		else if (
+			!/^(\+7|8)\s?\(?\d{3}\)?\s?\d{3}\s?\d{2}\s?\d{2}$/.test(this.order.phone)
+		)
+			errors.phone = 'Некорректный формат телефона';
 		if (!this.order.address) {
 			errors.address = 'Необходимо указать адрес';
 		}

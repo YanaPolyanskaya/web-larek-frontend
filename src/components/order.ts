@@ -1,9 +1,9 @@
-import { Contacts } from './contacts';
+import { Form } from './form';
 import { IOrder } from '../types';
 import { IEvents } from './base/events';
 import { ensureElements } from '../utils/utils';
 
-export class Order extends Contacts<IOrder> {
+export class Order extends Form<IOrder> {
 	protected _payment: HTMLButtonElement[];
 	
 	constructor(container: HTMLFormElement, events: IEvents) {
@@ -34,5 +34,6 @@ export class Order extends Contacts<IOrder> {
 		);
 		this.events.emit('order:change', { name });
 	}
+	
 
 }

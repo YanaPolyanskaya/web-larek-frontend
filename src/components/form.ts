@@ -3,7 +3,7 @@ import { IEvents } from './base/events';
 import { ensureElement } from '../utils/utils';
 import { IFormStatus } from '../types/index';
 
-export class Contacts<T> extends Component<IFormStatus> {
+export class Form<T> extends Component<IFormStatus> {
 	protected _submit: HTMLButtonElement;
 	protected _errors: HTMLElement;
 
@@ -36,8 +36,11 @@ export class Contacts<T> extends Component<IFormStatus> {
 		});
 	}
 
+	// set valid(value: boolean) {
+	// 	this._submit.disabled = !value;
+	// }
 	set valid(value: boolean) {
-		this._submit.disabled = !value;
+		this.setDisabled(this._submit, !value);
 	}
 
 	set errors(value: string) {

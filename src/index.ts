@@ -1,5 +1,5 @@
 import './scss/styles.scss';
-
+// import 'src/scss/styles.scss'; выходит ошибка, если я указываю, путь, что вы аписали в замечании
 import { EventEmitter } from './components/base/events';
 import { ShopAPI } from './components/shopAPI';
 import { API_URL, CDN_URL } from './utils/constants';
@@ -39,7 +39,8 @@ const contacts = new Order(cloneTemplate(contactsTemplate), events);
 api
 	.getProducts()
 	.then(appData.setStorage.bind(appData))
-	.catch((err) => console.log(err));
+	// .catch((err) => console.log(err));
+	.catch(console.error)
 
 
 // Мониторинг событий 
@@ -86,8 +87,9 @@ events.on('preview:changed', (element: ICard) => {
 				appData.basket.indexOf(element) === -1 ? 'В корзину' : 'Убрать из корзины',
 			price: element.price,
 		}),
-	});
+	});console.log(card)
 });
+//убрать консоль лог
 
 // Блокировка и разблокировка скролла попапа
 events.on('modal:open', page.lock.bind(page));
@@ -102,11 +104,21 @@ events.on('item:check', (element: ICard) => {
 // Добавление товара в корзину
 events.on('item:add', (element: ICard) => {
 	appData.addToBasket(element);
+	
+//   element.selected = true;
+//   appData.addToBasket(element);
+  
+//   modal.close();
+console.log(appData)
 });
+//убрать консоль лог
 
 // Удаление товара из корзины
 events.on('item:remove', (element: ICard) => {
 	appData.deleteFromBasket(element);
+	if (!appData.basket.length) {
+		basket.selected = appData.basket;
+	  }
 });
 
 // Изменение счетчика товаров корзины
@@ -127,7 +139,7 @@ events.on('basket:changed', (items: ICard[]) => {
 		});
 	});
 
-	let total = items.reduce((total, element) => total + element.price, 0);
+	const total = items.reduce((total, element) => total + element.price, 0);
 
 	basket.total = total;
 	appData.order.total = total;
