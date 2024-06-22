@@ -104,4 +104,3 @@ export class AppStatus extends Product<IProduct>{
 		if (this.validateOrderForm()) this.events.emit('order:ready', this.order);
 	}
 }
-

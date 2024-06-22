@@ -1,5 +1,5 @@
 import './scss/styles.scss';
-// import 'src/scss/styles.scss'; выходит ошибка, если я указываю, путь, что вы аписали в замечании
+// import 'src/scss/styles.scss'; выходит ошибка, если я указываю, путь, что вы написали в замечании
 import { EventEmitter } from './components/base/events';
 import { ShopAPI } from './components/shopAPI';
 import { API_URL, CDN_URL } from './utils/constants';

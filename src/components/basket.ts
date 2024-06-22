@@ -43,4 +43,3 @@ export class Basket extends Component<IBasket> {
 	}
 	
 }
-
