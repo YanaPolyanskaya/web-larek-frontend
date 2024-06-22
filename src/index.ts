@@ -39,7 +39,6 @@ const contacts = new Order(cloneTemplate(contactsTemplate), events);
 api
 	.getProducts()
 	.then(appData.setStorage.bind(appData))
-	// .catch((err) => console.log(err));
 	.catch(console.error)
 
 
@@ -76,6 +75,10 @@ events.on('preview:changed', (element: ICard) => {
 				appData.basket.indexOf(element) === -1 ? 'В корзину' : 'Убрать из корзины';
 		},
 	});
+	card.buttonElement =
+		appData.basket.indexOf(element) === -1 ? 'В корзину' : 'Убрать из корзины';
+
+
 
 	modal.render({
 		content: card.render({
@@ -87,9 +90,8 @@ events.on('preview:changed', (element: ICard) => {
 				appData.basket.indexOf(element) === -1 ? 'В корзину' : 'Убрать из корзины',
 			price: element.price,
 		}),
-	});console.log(card)
+	});
 });
-//убрать консоль лог
 
 // Блокировка и разблокировка скролла попапа
 events.on('modal:open', page.lock.bind(page));
@@ -104,21 +106,14 @@ events.on('item:check', (element: ICard) => {
 // Добавление товара в корзину
 events.on('item:add', (element: ICard) => {
 	appData.addToBasket(element);
-	
-//   element.selected = true;
-//   appData.addToBasket(element);
-  
-//   modal.close();
-console.log(appData)
 });
-//убрать консоль лог
 
 // Удаление товара из корзины
 events.on('item:remove', (element: ICard) => {
 	appData.deleteFromBasket(element);
 	if (!appData.basket.length) {
 		basket.selected = appData.basket;
-	  }
+	}
 });
 
 // Изменение счетчика товаров корзины

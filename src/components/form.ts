@@ -36,9 +36,6 @@ export class Form<T> extends Component<IFormStatus> {
 		});
 	}
 
-	// set valid(value: boolean) {
-	// 	this._submit.disabled = !value;
-	// }
 	set valid(value: boolean) {
 		this.setDisabled(this._submit, !value);
 	}

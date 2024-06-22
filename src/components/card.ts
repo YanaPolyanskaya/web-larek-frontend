@@ -46,31 +46,7 @@ export class Card extends Component<ICard> {
 		return this._basketIndexElement.textContent || '';
 	}
 
-	// set categoryView(value: string) {
-
-	// 	switch (value) {
-	// 		case 'другое':
-	// 			this._categoryElement.classList.add('card__category_other');
-	// 			break;
-	// 		case 'софт-скил':
-	// 			this._categoryElement.classList.add('card__category_soft');
-	// 			break;
-	// 		case 'дополнительное':
-	// 			this._categoryElement.classList.add('card__category_additional');
-	// 			break;
-	// 		case 'кнопка':
-	// 			this._categoryElement.classList.add('card__category_button');
-	// 			break;
-	// 		case 'хард-скил':
-	// 			this._categoryElement.classList.add('card__category_hard');
-	// 			break;
-	// 		default:
-	// 			this._categoryElement.classList.add('card__category_other');
-	// 			break;
-	// 	}
-	// }
-
-	protected _categoryColor = <Record<string, string>>{ // описания категории
+	protected _categoryColor = <Record<string, string>>{
 		"софт-скил": "soft",
 		"другое": "other",
 		"дополнительное": "additional",
@@ -78,7 +54,6 @@ export class Card extends Component<ICard> {
 		"хард-скил": "hard"
 	}
 
-	// метод установки содержимой категории
 	set category(value: string) {
 		this._categoryElement.textContent = String(value);
 		this.toggleClass(this._categoryElement, `card__category_${this._categoryColor[value]}`, true)
@@ -101,8 +76,6 @@ export class Card extends Component<ICard> {
 	}
 
 	set price(value: number | null) {
-		// if (value === null) this.setText(this._price, 'Бесценно');
-		//if (value === null) this._price.textContent = String(this._price) + ' Бесценно';
 		if (value === null) this._price.textContent = 'Бесценно';
 		else this._price.textContent = `${value.toString()} синапса(-ов)`
 	}

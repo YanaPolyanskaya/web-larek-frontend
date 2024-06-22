@@ -5,7 +5,7 @@ import { ensureElements } from '../utils/utils';
 
 export class Order extends Form<IOrder> {
 	protected _payment: HTMLButtonElement[];
-	
+
 	constructor(container: HTMLFormElement, events: IEvents) {
 		super(container, events);
 
@@ -34,6 +34,6 @@ export class Order extends Form<IOrder> {
 		);
 		this.events.emit('order:change', { name });
 	}
-	
+
 
 }
